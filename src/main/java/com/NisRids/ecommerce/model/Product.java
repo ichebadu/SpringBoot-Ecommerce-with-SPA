@@ -1,6 +1,5 @@
 package com.NisRids.ecommerce.model;
 
-import com.NisRids.ecommerce.model.Category;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -22,7 +21,7 @@ public class Product {
     Category category;
 
     public Product(String name, String imageURL, double price, String description, Category category){
-//        super();
+        super();
         this.name = name;
         this.imageURL = imageURL;
         this.price = price;

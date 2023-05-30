@@ -1,13 +1,12 @@
-package com.NisRids.ecommerce.control;
+package com.NisRids.ecommerce.controller;
 
 import com.NisRids.ecommerce.Service.CategoryService;
 import com.NisRids.ecommerce.Service.ProductService;
-import com.NisRids.ecommerce.config.common.ApiResponse;
+import com.NisRids.ecommerce.common.ApiResponse;
 import com.NisRids.ecommerce.dto.ProductDto;
 import com.NisRids.ecommerce.model.Category;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

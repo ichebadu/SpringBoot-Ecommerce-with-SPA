@@ -1,4 +1,4 @@
-package com.NisRids.ecommerce.config.common;
+package com.NisRids.ecommerce.common;
 
 import java.time.LocalDateTime;
 

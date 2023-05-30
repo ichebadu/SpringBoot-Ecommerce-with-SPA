@@ -1,7 +1,7 @@
-package com.NisRids.ecommerce.control;
+package com.NisRids.ecommerce.controller;
 
 import com.NisRids.ecommerce.Service.CategoryService;
-import com.NisRids.ecommerce.config.common.ApiResponse;
+import com.NisRids.ecommerce.common.ApiResponse;
 import com.NisRids.ecommerce.model.Category;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class CategoryController {
     @PostMapping("/create")
     public ResponseEntity<ApiResponse> createCategory(@Valid @RequestBody Category category){
         if (Objects.nonNull(categoryService.readCategory(category.getCategoryName()))){
-            return new ResponseEntity<ApiResponse>(new ApiResponse(false,"category already"), HttpStatus.CONFLICT);
+            return new ResponseEntity<>(new ApiResponse(false,"category already"), HttpStatus.CONFLICT);
         }
         categoryService.createCategory(category);
         return new ResponseEntity<>(new ApiResponse(true,"created the category"),HttpStatus.CREATED);
