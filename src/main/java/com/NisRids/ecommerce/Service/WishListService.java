@@ -3,20 +3,21 @@ package com.NisRids.ecommerce.Service;
 import com.NisRids.ecommerce.model.User;
 import com.NisRids.ecommerce.model.WishList;
 import com.NisRids.ecommerce.repository.WishListRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class WishListService {
-    @Autowired
-    private WishListRepository wishListRepository;
+
+    private final WishListRepository wishListRepository;
 
     public void createdWishList(WishList wishList){
         wishListRepository.save(wishList);
     }
     public List<WishList> readWishList(User user) {
-        return wishListRepository.findAllByUserByOrderByCreatedDateDesc(user);
+        return wishListRepository.findAllByUserOrderByCreatedDateDesc(user);
     }
 }

@@ -9,22 +9,23 @@ import com.NisRids.ecommerce.model.Product;
 import com.NisRids.ecommerce.model.User;
 import com.NisRids.ecommerce.model.WishList;
 import com.NisRids.ecommerce.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequiredArgsConstructor
 public class WishListController {
-    @Autowired
-    private WishListService wishListService;
-    @Autowired
-    private AuthenticationService authenticationService;
-    @Autowired
-    private ProductRepository productRepository;
+
+    private final WishListService wishListService;
+
+    private final AuthenticationService authenticationService;
+
+    private final ProductRepository productRepository;
 
     @PostMapping("/add")
     public ResponseEntity<ApiResponse> addWishList(@RequestBody ProductDto productDto, @RequestParam("token") String token) throws AuthenticationFailException {

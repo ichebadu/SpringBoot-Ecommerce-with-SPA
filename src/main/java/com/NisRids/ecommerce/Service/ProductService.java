@@ -1,6 +1,7 @@
 package com.NisRids.ecommerce.Service;
 
 import com.NisRids.ecommerce.dto.ProductDto;
+import com.NisRids.ecommerce.exceptions.ProductNotExistException;
 import com.NisRids.ecommerce.model.Category;
 import com.NisRids.ecommerce.model.Product;
 import com.NisRids.ecommerce.repository.ProductRepository;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -48,5 +50,13 @@ public class ProductService {
         Product product = getProductFromDto(productDto,category);
         product.setId(productID);
         productRepository.save(product);
+    }
+
+    public Product getProductById(Long productId) throws ProductNotExistException{
+        Optional<Product> optionalProduct = productRepository.findById(productId);
+        if(!optionalProduct.isPresent()) {
+            throw new ProductNotExistException("Product id is invalid " + productId);
+        }
+            return optionalProduct.get();
     }
 }

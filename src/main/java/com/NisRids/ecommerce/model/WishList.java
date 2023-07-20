@@ -1,12 +1,11 @@
 package com.NisRids.ecommerce.model;
 
 import jakarta.persistence.*;
-import org.hibernate.sql.results.graph.Fetch;
-import org.springframework.validation.FieldError;
+
 
 import java.util.Date;
 @Entity
-@Table(name ="")
+@Table(name ="wishList")
 public class WishList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
